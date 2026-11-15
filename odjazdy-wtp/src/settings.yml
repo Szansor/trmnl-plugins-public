@@ -16,37 +16,45 @@ oauth_pkce_enabled: 'no'
 custom_fields:
 - keyname: author_bio
   field_type: author_bio
-  name: O pluginie
+  name: About This Plugin
   category: travel
   github_url: https://github.com/Szansor/trmnl-plugins-public
   learn_more_url: https://github.com/Szansor/trmnl-plugins-public/tree/main/odjazdy-wtp
-  description: 'Odjazdy na żywo z wybranego przystanku komunikacji miejskiej w Warszawie (autobusy i tramwaje WTP): realna godzina odjazdu, opóźnienie względem rozkładu i kilka kolejnych kursów. Opcjonalnie mała ikona pogody z temperaturą.<br/><br/><b>Jak ustawić:</b> wejdź na <a href="https://zbiorkom.live/warsaw">zbiorkom.live/warsaw</a>, kliknij swój przystanek (konkretny słupek, np. Centrum 01) i wklej adres strony z paska przeglądarki w pole poniżej. Jeśli plugin pokaże „Nie znaleziono przystanku”, skopiuj link ponownie.<br/><br/>Godziny są realne (rozkład + opóźnienie z GPS). Ekran e-papieru nie odświeża się co minutę, dlatego plugin pokazuje godziny, a nie odliczanie, oraz godzinę pobrania danych.<br/><br/>Dane: <a href="https://zbiorkom.live">zbiorkom.live</a> (otwarte dane WTP / m.st. Warszawy), pogoda: <a href="https://open-meteo.com">Open-Meteo</a>. Kod (licencja MIT) i zgłaszanie problemów: <a href="https://github.com/Szansor/trmnl-plugins-public">GitHub</a>.<br/><br/><i>Live departures from any Warsaw (WTP) public transport stop, with real departure times, delays and an optional weather icon. Paste the stop link from zbiorkom.live. Source code (MIT) and issues on GitHub.</i>'
+  description: 'Live departures from any public transport stop in Warsaw, Poland (WTP buses and trams): the real departure time, the delay against the timetable and the next few departures. Optionally a small weather icon with the temperature.<br/><br/><b>Setup:</b> open <a href="https://zbiorkom.live/warsaw">zbiorkom.live/warsaw</a>, tap your stop (a specific pole, e.g. Centrum 01) and paste the page address from your browser into the field below. If the screen says "Stop not found", copy the link again.<br/><br/>Times are real (timetable + live GPS delay). An e-paper screen does not refresh every minute, so the plugin shows clock times instead of a countdown, plus the time the data was fetched. The screen can be shown in English or Polish.<br/><br/>Data: <a href="https://zbiorkom.live">zbiorkom.live</a> (open data from WTP / City of Warsaw), weather: <a href="https://open-meteo.com">Open-Meteo</a>. Source code (MIT) and issues: <a href="https://github.com/Szansor/trmnl-plugins-public">GitHub</a>.<br/><br/><i>Polski: odjazdy na żywo z dowolnego przystanku w Warszawie. Język ekranu (English / Polski) wybierzesz w ustawieniach poniżej.</i>'
 - keyname: stop
   field_type: string
-  name: Przystanek (link z zbiorkom.live)
-  description: Adres strony przystanku z <a href="https://zbiorkom.live/warsaw">zbiorkom.live/warsaw</a> albo samo ID przystanku, np. centrum01-0fb5f.
+  name: Stop (zbiorkom.live link)
+  description: The stop page address from <a href="https://zbiorkom.live/warsaw">zbiorkom.live/warsaw</a>, or just the stop ID, e.g. centrum01-0fb5f.
   default: https://zbiorkom.live/warsaw/stop/centrum01-0fb5f
   placeholder: https://zbiorkom.live/warsaw/stop/centrum01-0fb5f
 - keyname: stop_name
   field_type: string
-  name: Nazwa przystanku na ekranie
-  description: Wyświetlana w tytule, np. Centrum 01.
+  name: Stop name on screen
+  description: Shown in the title, e.g. Centrum 01.
   default: Centrum 01
   placeholder: Centrum 01
   optional: true
 - keyname: lines
   field_type: string
-  name: Tylko wybrane linie
-  description: Numery linii oddzielone przecinkami, np. 175,520. Zostaw puste, aby pokazać wszystkie linie z przystanku.
+  name: Only these lines
+  description: Line numbers separated by commas, e.g. 175,520. Leave empty to show every line at the stop.
   placeholder: '175,520'
   optional: true
+- keyname: language
+  field_type: select
+  name: Screen language
+  description: Language of the labels on the screen. Stop and destination names always stay in Polish.
+  options:
+  - English: en
+  - Polski: pl
+  default: en
 - keyname: show_weather
   field_type: select
-  name: Pogoda w rogu ekranu
-  description: Mała ikona pogody i temperatura obok listy odjazdów.
+  name: Weather in the corner
+  description: A small weather icon and the temperature next to the departures.
   options:
-  - Tak: 'yes'
-  - Nie: 'no'
+  - 'Yes': 'yes'
+  - 'No': 'no'
   default: 'yes'
   conditional_validation:
   - when: 'no'
@@ -54,9 +62,9 @@ custom_fields:
     - weather_location
 - keyname: weather_location
   field_type: lat_lon
-  name: Miejsce pogody
-  description: Wyszukaj adres albo wpisz współrzędne. Najlepiej okolica Twojego przystanku.
+  name: Weather location
+  description: Search for an address or enter coordinates, ideally near your stop.
   default: 52.2291,21.0119
-name: Odjazdy WTP Warszawa
-description: Odjazdy na żywo z przystanku WTP
+name: Warsaw Transit Departures
+description: Live departures from Warsaw stops
 refresh_interval: 15
