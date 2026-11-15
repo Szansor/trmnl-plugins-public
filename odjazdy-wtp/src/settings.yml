@@ -2,31 +2,27 @@
 strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
-static_data:
+static_data: ''
 polling_verb: get
 framework_version: 3.4.6
 serverless_language: node
-refresh_interval_floor:
-polling_url: |-
-  https://api.zbiorkom.live/api6-open/warsaw/stops/{{ stop | split: "/" | last | split: "?" | first | strip }}?limit=15{% if lines != blank %}&routes={{ lines | remove: " " }}{% endif %}
-  https://api.open-meteo.com/v1/forecast?latitude={{ weather_location | split: "," | first | strip }}&longitude={{ weather_location | split: "," | last | strip }}&current=temperature_2m,weather_code,is_day&timezone=Europe%2FWarsaw&forecast_days=1
-polling_headers:
-polling_body:
+refresh_interval_floor: ''
+polling_url: "https://api.zbiorkom.live/api6-open/warsaw/stops/{{ stop | split: \"/\" | last | split: \"?\" | first | strip }}?limit=15{% if lines != blank %}&routes={{ lines | remove: \" \" }}{% endif %}\r\nhttps://api.open-meteo.com/v1/forecast?latitude={{ weather_location | split: \",\" | first | strip }}&longitude={{ weather_location | split: \",\" | last | strip }}&current=temperature_2m,weather_code,is_day&timezone=Europe%2FWarsaw&forecast_days=1"
+polling_headers: ''
+polling_body: ''
+id: 541707
 oauth_enabled: 'false'
 oauth_pkce_enabled: 'no'
-name: Odjazdy WTP Warszawa
-description: Odjazdy na żywo z przystanku WTP
-refresh_interval: 15
 custom_fields:
 - keyname: author_bio
   field_type: author_bio
   name: O pluginie
   category: travel
-  description: "Odjazdy na żywo z wybranego przystanku komunikacji miejskiej w Warszawie (autobusy i tramwaje WTP): realna godzina odjazdu, opóźnienie względem rozkładu i kilka kolejnych kursów. Opcjonalnie mała ikona pogody z temperaturą.<br/><br/><b>Jak ustawić:</b> wejdź na <a href=\"https://zbiorkom.live/warsaw\">zbiorkom.live/warsaw</a>, kliknij swój przystanek (konkretny słupek, np. Centrum 01) i wklej adres strony z paska przeglądarki w pole poniżej. Jeśli plugin pokaże „Nie znaleziono przystanku”, skopiuj link ponownie.<br/><br/>Godziny są realne (rozkład + opóźnienie z GPS). Ekran e-papieru nie odświeża się co minutę, dlatego plugin pokazuje godziny, a nie odliczanie, oraz godzinę pobrania danych.<br/><br/>Dane: <a href=\"https://zbiorkom.live\">zbiorkom.live</a> (otwarte dane WTP / m.st. Warszawy), pogoda: <a href=\"https://open-meteo.com\">Open-Meteo</a>.<br/><br/><i>Live departures from any Warsaw (WTP) public transport stop, with real departure times, delays and an optional weather icon. Paste the stop link from zbiorkom.live.</i>"
+  description: 'Odjazdy na żywo z wybranego przystanku komunikacji miejskiej w Warszawie (autobusy i tramwaje WTP): realna godzina odjazdu, opóźnienie względem rozkładu i kilka kolejnych kursów. Opcjonalnie mała ikona pogody z temperaturą.<br/><br/><b>Jak ustawić:</b> wejdź na <a href="https://zbiorkom.live/warsaw">zbiorkom.live/warsaw</a>, kliknij swój przystanek (konkretny słupek, np. Centrum 01) i wklej adres strony z paska przeglądarki w pole poniżej. Jeśli plugin pokaże „Nie znaleziono przystanku”, skopiuj link ponownie.<br/><br/>Godziny są realne (rozkład + opóźnienie z GPS). Ekran e-papieru nie odświeża się co minutę, dlatego plugin pokazuje godziny, a nie odliczanie, oraz godzinę pobrania danych.<br/><br/>Dane: <a href="https://zbiorkom.live">zbiorkom.live</a> (otwarte dane WTP / m.st. Warszawy), pogoda: <a href="https://open-meteo.com">Open-Meteo</a>.<br/><br/><i>Live departures from any Warsaw (WTP) public transport stop, with real departure times, delays and an optional weather icon. Paste the stop link from zbiorkom.live.</i>'
 - keyname: stop
   field_type: string
   name: Przystanek (link z zbiorkom.live)
-  description: "Adres strony przystanku z <a href=\"https://zbiorkom.live/warsaw\">zbiorkom.live/warsaw</a> albo samo ID przystanku, np. centrum01-0fb5f."
+  description: Adres strony przystanku z <a href="https://zbiorkom.live/warsaw">zbiorkom.live/warsaw</a> albo samo ID przystanku, np. centrum01-0fb5f.
   default: https://zbiorkom.live/warsaw/stop/centrum01-0fb5f
   placeholder: https://zbiorkom.live/warsaw/stop/centrum01-0fb5f
 - keyname: stop_name
@@ -58,4 +54,7 @@ custom_fields:
   field_type: lat_lon
   name: Miejsce pogody
   description: Wyszukaj adres albo wpisz współrzędne. Najlepiej okolica Twojego przystanku.
-  default: '52.2291,21.0119'
+  default: 52.2291,21.0119
+name: Odjazdy WTP Warszawa
+description: Odjazdy na żywo z przystanku WTP
+refresh_interval: 15
