@@ -11,11 +11,18 @@
       {%- else -%}
       <span class="value value--xlarge lg:value--xxlarge portrait:value--xlarge lg:portrait:value--xxlarge value--tnums">{{ first.real }}</span>
       {%- endif -%}
-      <span class="label label--small lg:label--base {% if first.late %}label--filled{% else %}label--outline{% endif %}">{{ first.delay_txt }}</span>
+      {%- if first.delay_txt != blank -%}<span class="label label--small lg:label--base {% if first.late %}label--filled{% else %}label--outline{% endif %}">{{ first.delay_txt }}</span>{%- endif -%}
     </div>
   </div>
-  <div class="outline flex flex--row flex--between flex--center-y gap--small px--2 py--1 shrink-0">
-    <span class="label label--small lg:label--base" data-clamp="1">{{ t_then }}{% for d in rest limit: 2 %} · {{ d.line }} {{ d.real }}{% endfor %}</span>
+  {%- for d in rest limit: 3 -%}
+  <div class="hidden lg:portrait:flex outline flex--row flex--center-y gap--small px--2 py--1 shrink-0">
+    <span class="bg--black rounded--small text--center px--1 w--min-20 shrink-0"><span class="value value--base value--tnums text--white">{{ d.line }}</span></span>
+    <div class="flex flex--row flex--left grow"><span class="label label--base" data-clamp="1" data-clamp-lg="1">→ {{ d.headsign }}</span></div>
+    <span class="value value--base value--tnums shrink-0">{% if d.cancelled %}{{ t_cancelled }}{% else %}{{ d.real }}{% endif %}</span>
+  </div>
+  {%- endfor -%}
+  <div class="outline flex flex--row flex--between lg:portrait:flex--right flex--center-y gap--small px--2 py--1 shrink-0">
+    <span class="label label--small lg:label--base lg:portrait:hidden" data-clamp="1" data-clamp-lg="1">{{ t_then }}{% for d in rest limit: 2 %} · {{ d.line }} {% if d.cancelled %}{{ t_cancelled }}{% else %}{{ d.real }}{% endif %}{% endfor %}</span>
     {%- if show_wx -%}
     <div class="flex flex--row flex--center-y gap--xsmall shrink-0">
       <span class="w--5 h--5 lg:w--7 lg:h--7">{{ wx_svg }}</span>

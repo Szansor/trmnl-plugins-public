@@ -48,7 +48,8 @@ function run(input) {
     if (real < now - 60000) continue;
     var dm = Math.floor(real / 60000) - Math.floor(sched / 60000);
     var live = d.isRealtime === true;
-    var txt = !live ? T_SCHED : (dm === 0 ? T_ONTIME : (dm > 0 ? '+' + dm + ' min' : '−' + Math.abs(dm) + ' min'));
+    var cancelled = d.isCancelled === true;
+    var txt = cancelled ? '' : !live ? T_SCHED : (dm === 0 ? T_ONTIME : (dm > 0 ? '+' + dm + ' min' : '−' + Math.abs(dm) + ' min'));
     list.push({
       line: String(route.name || route.id || '?'),
       headsign: String(trip.headsign || ''),
@@ -57,8 +58,8 @@ function run(input) {
       delay_min: dm,
       delay_txt: txt,
       live: live,
-      late: live && dm >= 3,
-      cancelled: d.isCancelled === true
+      late: !cancelled && live && dm >= 3,
+      cancelled: cancelled
     });
   }
 

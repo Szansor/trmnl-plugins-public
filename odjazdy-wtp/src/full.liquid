@@ -5,13 +5,13 @@
       <span class="w--14 h--14 lg:w--24 lg:h--24">{{ bus_svg }}</span>
       <span class="bg--black rounded--small px--3 lg:px--4"><span class="value value--large lg:value--xxlarge value--tnums text--white">{{ first.line }}</span></span>
     </div>
-    <span class="label lg:label--large" data-clamp="1">→ {{ first.headsign | truncate: 30 }}</span>
+    <span class="label lg:label--large" data-clamp="1" data-clamp-lg="1">→ {{ first.headsign }}</span>
     {%- if first.cancelled -%}
     <span class="value value--xlarge lg:value--xxlarge">{{ t_cancelled }}</span>
     {%- else -%}
     <span class="value value--xxlarge lg:value--mega lg:portrait:value--xxxlarge value--tnums">{{ first.real }}</span>
     {%- endif -%}
-    <span class="label {% if first.late %}label--filled{% else %}label--outline{% endif %} lg:label--large">{{ first.delay_txt }}</span>
+    {%- if first.delay_txt != blank -%}<span class="label {% if first.late %}label--filled{% else %}label--outline{% endif %} lg:label--large">{{ first.delay_txt }}</span>{%- endif -%}
     <span class="label label--small lg:label--base">{{ t_sched }} {{ first.sched }}</span>
   </div>
   <div class="flex flex--col flex--stretch-x gap--small grow">
@@ -27,7 +27,7 @@
     {%- for d in rest limit: 6 -%}
     <div class="outline flex flex--row flex--center-y gap px--3 grow{% if forloop.index == 5 %} hidden lg:flex{% elsif forloop.index == 6 %} hidden lg:flex lg:portrait:hidden{% endif %}">
       <span class="bg--black rounded--small text--center px--2 w--min-20 lg:w--min-28 shrink-0"><span class="value value--tnums text--white lg:value--large">{{ d.line }}</span></span>
-      <div class="flex flex--row flex--left grow"><span class="label lg:label--large" data-clamp="1">→ {{ d.headsign | truncate: 30 }}</span></div>
+      <div class="flex flex--row flex--left grow"><span class="label lg:label--large" data-clamp="1" data-clamp-lg="1">→ {{ d.headsign }}</span></div>
       <div class="flex flex--col flex--end shrink-0">
         <span class="value value--tnums lg:value--large">{% if d.cancelled %}{{ t_cancelled }}{% else %}{{ d.real }}{% endif %}</span>
         <span class="label label--small lg:label--base">{{ d.delay_txt }}</span>
