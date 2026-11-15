@@ -1,22 +1,19 @@
 # trmnl-plugins-public
 
-Pluginy do wyświetlaczy e-papieru [TRMNL](https://trmnl.com) (TRMNL OG i TRMNL X), gotowe do pobrania.
+Ready-to-use plugins for [TRMNL](https://trmnl.com) e-paper displays (TRMNL OG and TRMNL X).
 
-*Plugins for TRMNL e-paper displays (TRMNL OG and TRMNL X), ready to use.*
-
-| Plugin | Opis |
+| Plugin | Description |
 |---|---|
-| [Odjazdy WTP Warszawa](odjazdy-wtp/) | Odjazdy na żywo z dowolnego przystanku komunikacji miejskiej w Warszawie + mała ikona pogody |
+| [Warsaw Transit Departures](odjazdy-wtp/) | Live departures from any public transport stop in Warsaw, Poland, with a small weather icon. English or Polish screen. |
 
-Każdy plugin ma format narzędzia [trmnlp](https://github.com/usetrmnl/trmnlp)
-(`src/settings.yml`, `src/transform.js` i pliki `*.liquid` dla 4 rozmiarów ekranu).
-Instrukcja instalacji jest w README pluginu.
+Each plugin uses the [trmnlp](https://github.com/usetrmnl/trmnlp) layout
+(`src/settings.yml`, `src/transform.js` and `*.liquid` files for the 4 screen sizes).
+Install steps are in each plugin's README.
 
-## Licencja / License
+*Po polsku: gotowe pluginy do wyświetlaczy TRMNL. Instrukcje są w README każdego pluginu.*
 
-[MIT](LICENSE) — pełne open source. Możesz dowolnie używać, kopiować, zmieniać, remiksować
-i publikować te pluginy (także jako własne receptury TRMNL), również komercyjnie.
-Jedyny warunek: zostaw w kopii plik `LICENSE` z informacją o autorze.
+## License
 
-*MIT — fully open source. Use, copy, modify, remix and publish freely, including commercially;
-just keep the `LICENSE` notice.*
+[MIT](LICENSE) — fully open source. Use, copy, change, remix and publish these plugins freely
+(including as your own TRMNL recipes), also commercially. The only condition: keep the
+`LICENSE` file with the author notice in your copy.
