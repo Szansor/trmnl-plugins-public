@@ -2,16 +2,14 @@
 strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
-static_data:
+static_data: ''
 polling_verb: get
 framework_version: 3.4.6
 serverless_language: node
-refresh_interval_floor:
-polling_url: |-
-  https://api.zbiorkom.live/api6-open/warsaw/stops/{{ stop | split: "/" | last | split: "?" | first | strip }}?limit=15{% if lines != blank %}&routes={{ lines | remove: " " }}{% endif %}
-  https://api.open-meteo.com/v1/forecast?latitude={{ weather_location | split: "," | first | strip }}&longitude={{ weather_location | split: "," | last | strip }}&current=temperature_2m,weather_code,is_day&timezone=Europe%2FWarsaw&forecast_days=1
-polling_headers:
-polling_body:
+refresh_interval_floor: ''
+polling_url: "https://api.zbiorkom.live/api6-open/warsaw/stops/{{ stop | split: \"/\" | last | split: \"?\" | first | strip }}?limit=15{% if lines != blank %}&routes={{ lines | remove: \" \" }}{% endif %}\r\nhttps://api.open-meteo.com/v1/forecast?latitude={{ weather_location | split: \",\" | first | strip }}&longitude={{ weather_location | split: \",\" | last | strip }}&current=temperature_2m,weather_code,is_day&timezone=Europe%2FWarsaw&forecast_days=1"
+polling_headers: ''
+polling_body: ''
 id: 541707
 oauth_enabled: 'false'
 oauth_pkce_enabled: 'no'
