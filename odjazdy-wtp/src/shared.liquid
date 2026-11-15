@@ -1,4 +1,9 @@
 {%- assign cfg = trmnl.plugin_settings.custom_fields_values -%}
+{%- if cfg.language == "pl" -%}
+{%- assign t_next = "NASTĘPNE" -%}{%- assign t_sched = "rozkład" -%}{%- assign t_cancelled = "odwołany" -%}{%- assign t_none_more = "Brak kolejnych odjazdów" -%}{%- assign t_then = "dalej" -%}{%- assign t_live = "na żywo z" -%}{%- assign t_title = "Odjazdy" -%}{%- assign t_nf_title = "Nie znaleziono przystanku" -%}{%- assign t_nf_desc = "Sprawdź link do przystanku w ustawieniach pluginu." -%}{%- assign t_empty_title = "Brak odjazdów" -%}{%- assign t_empty_desc = "W najbliższym czasie nic nie odjeżdża z tego przystanku." -%}
+{%- else -%}
+{%- assign t_next = "NEXT" -%}{%- assign t_sched = "scheduled" -%}{%- assign t_cancelled = "cancelled" -%}{%- assign t_none_more = "No more departures" -%}{%- assign t_then = "then" -%}{%- assign t_live = "live at" -%}{%- assign t_title = "Departures" -%}{%- assign t_nf_title = "Stop not found" -%}{%- assign t_nf_desc = "Check the stop link in the plugin settings." -%}{%- assign t_empty_title = "No departures" -%}{%- assign t_empty_desc = "Nothing leaves this stop in the near future." -%}
+{%- endif -%}
 {%- assign stop_label = cfg.stop_name | strip -%}
 {%- if stop_label == blank -%}{%- assign stop_label = cfg.stop | split: "/" | last | split: "?" | first | split: "-" | first | upcase -%}{%- endif -%}
 {%- assign show_wx = false -%}
@@ -11,11 +16,11 @@
 <div class="flex flex--col flex--center-x flex--center-y gap--small text--center w--full h--full">
   <span class="w--16 h--16">{{ bus_svg }}</span>
   {%- if status == "no_data" -%}
-  <span class="title">Nie znaleziono przystanku</span>
-  <span class="description">Sprawdź link do przystanku w ustawieniach pluginu.</span>
+  <span class="title">{{ t_nf_title }}</span>
+  <span class="description">{{ t_nf_desc }}</span>
   {%- else -%}
-  <span class="title">Brak odjazdów</span>
-  <span class="description">W najbliższym czasie nic nie odjeżdża z tego przystanku.</span>
+  <span class="title">{{ t_empty_title }}</span>
+  <span class="description">{{ t_empty_desc }}</span>
   {%- endif -%}
 </div>
 {%- endcapture -%}

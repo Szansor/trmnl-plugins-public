@@ -7,7 +7,7 @@
     </div>
     <div class="flex flex--col flex--center-x gap--xsmall">
       {%- if first.cancelled -%}
-      <span class="value value--large lg:value--xlarge">odwołany</span>
+      <span class="value value--large lg:value--xlarge">{{ t_cancelled }}</span>
       {%- else -%}
       <span class="value value--xlarge lg:value--xxlarge value--tnums">{{ first.real }}</span>
       {%- endif -%}
@@ -17,7 +17,7 @@
   </div>
   <div class="flex flex--col flex--stretch-x gap--xsmall grow">
     <div class="flex flex--row flex--between flex--center-y px--1">
-      <span class="label label--small lg:label--base">NASTĘPNE · {{ stop_label }}</span>
+      <span class="label label--small lg:label--base">{{ t_next }} · {{ stop_label }}</span>
       {%- if show_wx -%}
       <div class="flex flex--row flex--center-y gap--xsmall">
         <span class="w--5 h--5 lg:w--7 lg:h--7">{{ wx_svg }}</span>
@@ -29,12 +29,12 @@
     <div class="outline flex flex--row flex--center-y gap--small px--2 grow{% if forloop.index == 3 %} hidden lg:flex{% endif %}">
       <span class="bg--black rounded--small text--center px--1 w--min-14 lg:w--min-20 shrink-0"><span class="value value--small lg:value--base value--tnums text--white">{{ d.line }}</span></span>
       <div class="flex flex--row flex--left grow"><span class="label label--small lg:label--base" data-clamp="1">→ {{ d.headsign | truncate: 24 }}</span></div>
-      <span class="value value--small lg:value--base value--tnums shrink-0">{% if d.cancelled %}odwołany{% else %}{{ d.real }}{% endif %}</span>
+      <span class="value value--small lg:value--base value--tnums shrink-0">{% if d.cancelled %}{{ t_cancelled }}{% else %}{{ d.real }}{% endif %}</span>
       <span class="label label--small lg:label--base shrink-0">{{ d.delay_txt }}</span>
     </div>
     {%- endfor -%}
     {%- if rest.size == 0 -%}
-    <div class="outline flex flex--center-x flex--center-y grow"><span class="label label--small">Brak kolejnych odjazdów</span></div>
+    <div class="outline flex flex--center-x flex--center-y grow"><span class="label label--small">{{ t_none_more }}</span></div>
     {%- endif -%}
   </div>
   {%- else -%}
@@ -43,6 +43,6 @@
 </div>
 <div class="title_bar">
   <img class="image image--adaptive" src="{{ title_icon }}">
-  <span class="title">Odjazdy · {{ stop_label }}</span>
-  <span class="instance">na żywo z {{ fetched }}</span>
+  <span class="title">{{ t_title }} · {{ stop_label }}</span>
+  <span class="instance">{{ t_live }} {{ fetched }}</span>
 </div>

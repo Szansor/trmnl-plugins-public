@@ -14,6 +14,11 @@ function run(input) {
     else if (part.error || part.code) apiError = String(part.error || part.code);
   }
 
+  var cfv = (src.trmnl && src.trmnl.plugin_settings && src.trmnl.plugin_settings.custom_fields_values) || {};
+  var pl = cfv.language === 'pl';
+  var T_SCHED = pl ? 'wg rozkładu' : 'timetable';
+  var T_ONTIME = pl ? 'o czasie' : 'on time';
+
   var now = Date.now();
   function lastSunday(year, month) {
     var d = new Date(Date.UTC(year, month + 1, 0, 1, 0, 0));
@@ -43,7 +48,7 @@ function run(input) {
     if (real < now - 60000) continue;
     var dm = Math.floor(real / 60000) - Math.floor(sched / 60000);
     var live = d.isRealtime === true;
-    var txt = !live ? 'wg rozkładu' : (dm === 0 ? 'o czasie' : (dm > 0 ? '+' + dm + ' min' : '−' + Math.abs(dm) + ' min'));
+    var txt = !live ? T_SCHED : (dm === 0 ? T_ONTIME : (dm > 0 ? '+' + dm + ' min' : '−' + Math.abs(dm) + ' min'));
     list.push({
       line: String(route.name || route.id || '?'),
       headsign: String(trip.headsign || ''),
@@ -60,17 +65,16 @@ function run(input) {
   var weather = null;
   if (wx) {
     var c = Number(wx.weather_code), day = wx.is_day !== 0;
-    var icon = 'cloud', label = 'pochmurno';
-    if (c === 0 || c === 1) { icon = day ? 'sun' : 'moon'; label = c === 0 ? 'bezchmurnie' : 'pogodnie'; }
-    else if (c === 2) { icon = day ? 'partly' : 'cloud'; label = 'małe zachmurzenie'; }
-    else if (c === 3) { icon = 'cloud'; label = 'pochmurno'; }
-    else if (c === 45 || c === 48) { icon = 'fog'; label = 'mgła'; }
-    else if (c >= 51 && c <= 57) { icon = 'rain'; label = 'mżawka'; }
-    else if ((c >= 61 && c <= 67) || (c >= 80 && c <= 82)) { icon = 'rain'; label = 'deszcz'; }
-    else if ((c >= 71 && c <= 77) || c === 85 || c === 86) { icon = 'snow'; label = 'śnieg'; }
-    else if (c >= 95) { icon = 'storm'; label = 'burza'; }
+    var icon = 'cloud';
+    if (c === 0 || c === 1) { icon = day ? 'sun' : 'moon'; }
+    else if (c === 2) { icon = day ? 'partly' : 'cloud'; }
+    else if (c === 3) { icon = 'cloud'; }
+    else if (c === 45 || c === 48) { icon = 'fog'; }
+    else if ((c >= 51 && c <= 67) || (c >= 80 && c <= 82)) { icon = 'rain'; }
+    else if ((c >= 71 && c <= 77) || c === 85 || c === 86) { icon = 'snow'; }
+    else if (c >= 95) { icon = 'storm'; }
     var t = Math.round(Number(wx.temperature_2m));
-    weather = { temp: (t === 0 ? 0 : t), icon: icon, label: label };
+    weather = { temp: (t === 0 ? 0 : t), icon: icon };
   }
 
   var status = 'ok';

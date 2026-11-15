@@ -7,7 +7,7 @@
     </div>
     <div class="flex flex--col flex--center-x gap--xsmall">
       {%- if first.cancelled -%}
-      <span class="value value--large">odwołany</span>
+      <span class="value value--large">{{ t_cancelled }}</span>
       {%- else -%}
       <span class="value value--xlarge lg:value--xxlarge portrait:value--xlarge lg:portrait:value--xxlarge value--tnums">{{ first.real }}</span>
       {%- endif -%}
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="outline flex flex--row flex--between flex--center-y gap--small px--2 py--1 shrink-0">
-    <span class="label label--small lg:label--base" data-clamp="1">dalej{% for d in rest limit: 2 %} · {{ d.line }} {{ d.real }}{% endfor %}</span>
+    <span class="label label--small lg:label--base" data-clamp="1">{{ t_then }}{% for d in rest limit: 2 %} · {{ d.line }} {{ d.real }}{% endfor %}</span>
     {%- if show_wx -%}
     <div class="flex flex--row flex--center-y gap--xsmall shrink-0">
       <span class="w--5 h--5 lg:w--7 lg:h--7">{{ wx_svg }}</span>
@@ -29,6 +29,6 @@
 </div>
 <div class="title_bar">
   <img class="image image--adaptive" src="{{ title_icon }}">
-  <span class="title">Odjazdy</span>
+  <span class="title">{{ t_title }}</span>
   <span class="instance">{{ stop_label }} · {{ fetched }}</span>
 </div>
