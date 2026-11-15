@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect x="0" y="0" width="512" height="512" rx="96" fill="#FFD100"/>
+  <g transform="translate(96,40) scale(5)">
+    <rect x="3" y="18" width="5" height="11" rx="2" fill="#111"/>
+    <rect x="56" y="18" width="5" height="11" rx="2" fill="#111"/>
+    <rect x="14" y="50" width="9" height="9" rx="2" fill="#111"/>
+    <rect x="41" y="50" width="9" height="9" rx="2" fill="#111"/>
+    <path fill="#111" fill-rule="evenodd" d="M18 5h28a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8H18a8 8 0 0 1-8-8V13a8 8 0 0 1 8-8zM19 10a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h26a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zM18 20a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h28a3 3 0 0 0 3-3V23a3 3 0 0 0-3-3zM19 42a3 3 0 1 0 0 6 3 3 0 1 0 0-6zM45 42a3 3 0 1 0 0 6 3 3 0 1 0 0-6zM28 43a2 2 0 0 0 0 4h8a2 2 0 0 0 0-4z"/>
+  </g>
+  <rect x="56" y="370" width="400" height="96" rx="24" fill="#D7141A"/>
+  <text x="256" y="442" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-weight="bold" font-size="72" letter-spacing="10" fill="#FFFFFF">WAW</text>
+</svg>

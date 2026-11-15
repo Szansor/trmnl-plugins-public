@@ -1,3 +1,5 @@
+<img src="docs/icon.png" width="96" align="right" alt="">
+
 # Odjazdy WTP Warszawa
 
 Plugin do [TRMNL](https://trmnl.com): odjazdy na żywo z dowolnego przystanku komunikacji
