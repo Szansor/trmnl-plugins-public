@@ -77,3 +77,8 @@ src/
 
 - Odjazdy: [zbiorkom.live](https://zbiorkom.live) (otwarte dane WTP / m.st. Warszawy)
 - Pogoda: [Open-Meteo](https://open-meteo.com)
+
+## Licencja
+
+[MIT](../LICENSE) — możesz dowolnie używać, zmieniać i remiksować ten plugin (także publikować
+własne wersje jako receptury TRMNL). Zostaw tylko informację o autorze z pliku `LICENSE`.
