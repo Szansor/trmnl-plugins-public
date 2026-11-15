@@ -12,6 +12,11 @@ Install steps are in each plugin's README.
 
 *Po polsku: gotowe pluginy do wyświetlaczy TRMNL. Instrukcje są w README każdego pluginu.*
 
+## Author
+
+Made by [Szansor](https://github.com/Szansor). Issues and ideas are welcome in
+[GitHub Issues](https://github.com/Szansor/trmnl-plugins-public/issues).
+
 ## License
 
 [MIT](LICENSE) — fully open source. Use, copy, change, remix and publish these plugins freely
